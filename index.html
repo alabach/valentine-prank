@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f0 25%, #fff0f8 50%, #ffe8f3 75%, #ffedf7 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 15s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.2);
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+            z-index: 10;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #d63384;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.1);
+        }
+
+        .question {
+            font-size: 28px;
+            color: #8b4789;
+            margin-bottom: 40px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .buttons-container {
+            position: relative;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+        }
+
+        button {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c94b7a 100%);
+            color: white;
+            position: relative;
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+            color: #666;
+            position: relative;
+        }
+
+        #noBtn:hover {
+            background: linear-gradient(135deg, #d0d0d0 0%, #adadad 100%);
+        }
+
+        #noBtn:active {
+            transform: scale(0.95);
+        }
+
+        .reaction {
+            margin-top: 30px;
+            font-size: 80px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 26px;
+            color: #8b4789;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        .success {
+            display: none;
+        }
+
+        .success.show {
+            display: block;
+        }
+
+        .success h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+
+        .success p {
+            font-size: 24px;
+            color: #8b4789;
+            line-height: 1.6;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            position: absolute;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">💕</div>
+    <div class="heart" style="left: 20%; animation-delay: 2s;">❤️</div>
+    <div class="heart" style="left: 30%; animation-delay: 4s;">💗</div>
+    <div class="heart" style="left: 40%; animation-delay: 1s;">💖</div>
+    <div class="heart" style="left: 50%; animation-delay: 3s;">💕</div>
+    <div class="heart" style="left: 60%; animation-delay: 5s;">❤️</div>
+    <div class="heart" style="left: 70%; animation-delay: 2.5s;">💗</div>
+    <div class="heart" style="left: 80%; animation-delay: 4.5s;">💖</div>
+    <div class="heart" style="left: 90%; animation-delay: 1.5s;">💕</div>
+
+    <div class="container">
+        <div class="main-content">
+            <h1>💝 Valentine's Day 💝</h1>
+            <p class="question">Will you be my Valentine and spend this special day with me?</p>
+            
+            <div class="buttons-container">
+                <button id="yesBtn">Yes! 💕</button>
+                <button id="noBtn">No 😔</button>
+            </div>
+
+            <div class="reaction" id="reaction"></div>
+            <div class="message" id="message"></div>
+        </div>
+
+        <div class="success" id="success">
+            <h2>🎉 Amazing! 🎉</h2>
+            <p>I can't wait to spend Valentine's Day with you! It's going to be absolutely wonderful! 💕</p>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const reaction = document.getElementById('reaction');
+        const message = document.getElementById('message');
+        const mainContent = document.querySelector('.main-content');
+        const success = document.getElementById('success');
+
+        // Function to move Yes button to random position
+        function moveYesButton() {
+            const container = document.querySelector('.buttons-container');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Calculate random position within container bounds
+            const maxX = containerRect.width - yesBtn.offsetWidth - 20;
+            const maxY = containerRect.height - yesBtn.offsetHeight - 20;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            yesBtn.style.position = 'absolute';
+            yesBtn.style.left = randomX + 'px';
+            yesBtn.style.top = randomY + 'px';
+        }
+
+        // Make Yes button flee when hovered
+        yesBtn.addEventListener('mouseenter', moveYesButton);
+
+        // Make Yes button flee when clicked (in case someone is fast!)
+        yesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveYesButton();
+        });
+
+        // Also move on touch for mobile devices
+        yesBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveYesButton();
+        });
+
+        // Handle No button click
+        noBtn.addEventListener('click', () => {
+            reaction.textContent = '😢';
+            message.textContent = 'You don\'t deserve my love!';
+            
+            reaction.classList.add('show');
+            message.classList.add('show');
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                reaction.classList.remove('show');
+                message.classList.remove('show');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
